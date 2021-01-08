@@ -4,6 +4,7 @@ import json
 import time
 import apimanager as tw
 import loop as it
+import os
 
 # this function tweets a new status and saves its id
 def get_last_tweet(cnt):
@@ -50,5 +51,15 @@ def main():
         time.sleep(900)
         cnt = write_to_json(cnt)
 
+# create the json directory 
+def setup():
+    os.mkdir('..\\resources\\json')
+    print('json directory created')
+
 if __name__ == "__main__":
+    # check if the json directory exists. if not, create it
+    if not os.path.isdir('..\\resources\\json'):
+        print('json directory does not exist. creating directory...')
+        setup()
+    
     main()
